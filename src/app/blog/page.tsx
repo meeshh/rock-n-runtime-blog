@@ -49,32 +49,21 @@ export default async function IndexPage({
     }
   `);
 
-  allCategories.forEach(
-    (category: {
-      _id: string;
-      title: string;
-      categorySlug: { current: string };
-      postIds: string[];
-    }) => {
-      category.postIds.forEach((postId: string) => {
-        if (!postCategoriesMap.has(postId)) {
-          postCategoriesMap.set(postId, []);
-        }
-        postCategoriesMap.get(postId)?.push({
-          _id: category._id,
-          title: category.title,
-          categorySlug: category.categorySlug,
-        });
-      });
-    }
-  );
+  allCategories.forEach((category: Category) => {
+    category.postIds.forEach((postId: string) => {
+      if (!postCategoriesMap.has(postId)) {
+        postCategoriesMap.set(postId, []);
+      }
+      postCategoriesMap.get(postId)?.push({ ...category });
+    });
+  });
 
   posts.forEach((post) => {
     post.categories = postCategoriesMap.get(post._id) || [];
   });
 
   return (
-    <main className="container mx-auto max-w-3xl p-8">
+    <main className="container mx-auto max-w-3xl p-8  bg-black bg-opacity-80 rounded-2xl">
       <h1 className="text-4xl font-bold mb-8">Posts</h1>
 
       <ul className="flex flex-col gap-y-4">

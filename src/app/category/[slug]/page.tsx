@@ -88,25 +88,14 @@ export default async function CategoryPage({
   );
 
   const postCategoriesMap = new Map<string, Category[]>();
-  allCategories.forEach(
-    (category: {
-      _id: string;
-      title: string;
-      categorySlug: { current: string };
-      postIds: string[];
-    }) => {
-      category.postIds.forEach((postId: string) => {
-        if (!postCategoriesMap.has(postId)) {
-          postCategoriesMap.set(postId, []);
-        }
-        postCategoriesMap.get(postId)?.push({
-          _id: category._id,
-          title: category.title,
-          categorySlug: category.categorySlug,
-        });
-      });
-    }
-  );
+  allCategories.forEach((category: Category) => {
+    category.postIds.forEach((postId: string) => {
+      if (!postCategoriesMap.has(postId)) {
+        postCategoriesMap.set(postId, []);
+      }
+      postCategoriesMap.get(postId)?.push({ ...category });
+    });
+  });
 
   posts.forEach((post) => {
     post.categories = postCategoriesMap.get(post._id) || [];
@@ -127,7 +116,7 @@ export default async function CategoryPage({
   const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
   return (
-    <main className="container mx-auto max-w-3xl p-8">
+    <main className="container mx-auto max-w-3xl p-8  bg-black bg-opacity-80 rounded-2xl">
       <h1 className="text-4xl font-bold mb-4">
         Posts in <span className="text-blue-500">{category.title}</span>
       </h1>

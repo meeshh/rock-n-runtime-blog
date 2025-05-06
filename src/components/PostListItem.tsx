@@ -25,7 +25,7 @@ const PostListItem = ({ post }: { post: Post }) => {
         {post.categories && post.categories.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {post.categories.map((category) => (
-              <CategoryChip key={category._id} category={category} />
+              <CategoryChip key={category._id} category={category} size="md" />
             ))}
           </div>
         )}

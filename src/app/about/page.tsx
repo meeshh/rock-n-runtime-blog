@@ -27,7 +27,7 @@ export default async function AboutPage() {
     : null;
 
   return (
-    <main className="container mx-auto max-w-3xl p-8 flex flex-col gap-4">
+    <main className="container mx-auto max-w-3xl p-8 flex flex-col gap-4 bg-black bg-opacity-80 rounded-2xl">
       {postImageUrl && (
         <Image
           src={postImageUrl}

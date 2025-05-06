@@ -29,7 +29,7 @@ export default function RootLayout({
           <Navbar />
         </div>
         <div className="h-full bg-background">
-          <main className="h-full flex-1 rounded-lg bg-[#000] border-t-brass border-l-brass border-b-brass-dark border-r-brass-dark border-4 amp-grille">
+          <main className="h-full flex-1 rounded-lg bg-[#000] border-t-brass border-l-brass border-b-brass-dark border-r-brass-dark border-4 amp-grille p-8">
             {children}
           </main>
         </div>
