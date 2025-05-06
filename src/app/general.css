@@ -1,0 +1,5 @@
+.rnr-text-shadow {
+  text-shadow: 0 4px 0 #000, 0 -4px 0 #000, 4px 0 0 #000, -4px 0 0 #000,
+    3px 3px 0 #000, -3px 3px 0 #000, 3px -3px 0 #000, -3px -3px 0 #000,
+    0 8px 12px rgba(0, 0, 0, 0.6);
+}
