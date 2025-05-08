@@ -77,6 +77,7 @@ export default async function IndexPage() {
             alt="Rock n' Runtime Logo"
             width={200}
             height={200}
+            style={{height: 'auto'}}
           />
         </div>
       </div>

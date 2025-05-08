@@ -17,10 +17,13 @@ export default function CategoriesDropdownClient({
   categories: Category[];
 }) {
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const triggerButtonRef = useRef<HTMLButtonElement>(null);
+
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      if (event.target === triggerButtonRef.current) return;
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
@@ -40,6 +43,7 @@ export default function CategoriesDropdownClient({
       <div className="flex flex-col items-center">
         <span className="text-white mb-2">Categories</span>
         <button
+          ref={triggerButtonRef}
           className={`handle 
             transition-transform 
             duration-700 
