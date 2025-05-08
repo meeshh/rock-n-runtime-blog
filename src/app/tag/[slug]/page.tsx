@@ -83,25 +83,14 @@ export default async function TagPage({
   );
 
   const postCategoriesMap = new Map<string, Category[]>();
-  allCategories.forEach(
-    (category: {
-      _id: string;
-      title: string;
-      categorySlug: { current: string };
-      postIds: string[];
-    }) => {
-      category.postIds.forEach((postId: string) => {
-        if (!postCategoriesMap.has(postId)) {
-          postCategoriesMap.set(postId, []);
-        }
-        postCategoriesMap.get(postId)?.push({
-          _id: category._id,
-          title: category.title,
-          categorySlug: category.categorySlug,
-        });
-      });
-    }
-  );
+  allCategories.forEach((category: Category) => {
+    category.postIds.forEach((postId: string) => {
+      if (!postCategoriesMap.has(postId)) {
+        postCategoriesMap.set(postId, []);
+      }
+      postCategoriesMap.get(postId)?.push({ ...category });
+    });
+  });
 
   posts.forEach((post) => {
     post.categories = postCategoriesMap.get(post._id) || [];

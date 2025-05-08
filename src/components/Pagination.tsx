@@ -1,14 +1,12 @@
 import Link from "next/link";
+import { FC } from "react";
 
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
-  currentPage,
-  totalPages,
-}) => {
+const Pagination: FC<PaginationProps> = ({ currentPage, totalPages }) => {
   const pageLinks = [];
   for (let i = 1; i <= totalPages; i++) {
     if (
@@ -25,10 +23,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="flex justify-between mt-4">
       {currentPage > 1 ? (
-        <Link
-          href={`?page=${currentPage - 1}`}
-          className="hover:text-blue-600"
-        >
+        <Link href={`?page=${currentPage - 1}`} className="hover:text-blue-600">
           Previous
         </Link>
       ) : (
@@ -55,10 +50,7 @@ const Pagination: React.FC<PaginationProps> = ({
       </div>
 
       {currentPage < totalPages ? (
-        <Link
-          href={`?page=${currentPage + 1}`}
-          className="hover:text-blue-600"
-        >
+        <Link href={`?page=${currentPage + 1}`} className="hover:text-blue-600">
           Next
         </Link>
       ) : (
