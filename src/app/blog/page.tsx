@@ -7,7 +7,7 @@ import { POSTS_PER_PAGE } from "@/utils/postUtils";
 export default async function IndexPage({
   searchParams,
 }: {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }) {
   const { page: pageParam } = await searchParams;
   const page = parseInt(pageParam as string) || 1;

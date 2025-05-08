@@ -37,7 +37,7 @@ const CATEGORY_QUERY = `*[_type == "category" && categorySlug.current == $slug][
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await client.fetch<Post>(POST_QUERY, { slug });
@@ -90,7 +90,7 @@ const options = { next: { revalidate: 30 } };
 export default async function PostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
 
