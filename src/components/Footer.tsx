@@ -21,7 +21,7 @@ const quickLinks = [
     href: "/about",
     label: "About",
     target: "_self",
-  }
+  },
 ];
 
 export default async function Footer() {
