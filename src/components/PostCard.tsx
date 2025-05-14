@@ -27,9 +27,7 @@ const PstCard: React.FC<PstCardProps> = ({ post }) => {
     : null;
 
   return (
-    <div
-      className={`w-52 min-h-52 rounded-2xl transition-transform transform hover:scale-105 relative overflow-hidden bg-background p-2 border-2 border-l-brass border-r-brass-dark border-t-brass border-b-brass-dark`}
-    >
+    <li className="w-52 min-h-52 rounded-2xl transition-transform transform hover:scale-105 relative overflow-hidden bg-background p-2 border-2 border-l-brass border-r-brass-dark border-t-brass border-b-brass-dark">
       <div className="w-full h-full flex flex-col items-center justify-between p-2">
         {postImageUrl && (
           <Image
@@ -46,12 +44,12 @@ const PstCard: React.FC<PstCardProps> = ({ post }) => {
           href={`/posts/${postSlug}`}
           className="hover:text-blue-600 transition-colors mb-2"
         >
-          <h5
+          <p
             className="w-44 text-md text-sm font-bold text-white text-shadow overflow-hidden whitespace-nowrap text-ellipsis"
             title={title}
           >
             {title}
-          </h5>
+          </p>
         </Link>
         <PostDate
           className="text-brass mb-2"
@@ -67,7 +65,7 @@ const PstCard: React.FC<PstCardProps> = ({ post }) => {
           </div>
         )}
       </div>
-    </div>
+    </li>
   );
 };
 

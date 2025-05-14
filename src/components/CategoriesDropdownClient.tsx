@@ -77,6 +77,9 @@ export default function CategoriesDropdownClient({
             after:rounded-full
             ${isOpen ? "rotate-180" : "rotate-0"}`}
           onClick={() => setIsOpen((prev) => !prev)}
+          aria-label={
+            isOpen ? "Close categories dropdown" : "Open categories dropdown"
+          }
         />
       </div>
       {isOpen && (

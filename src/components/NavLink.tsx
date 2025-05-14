@@ -26,7 +26,9 @@ const NavLink = ({ href, text, isActive = false }: NavLinkProps) => {
             before:border-[4px] 
             before:content-box
             before:border-${isActive ? "red-500" : "background-200"}`}
-        ></div>
+        >
+          <span className="sr-only">Go to {href}</span>
+        </div>
       </Link>
     </div>
   );
